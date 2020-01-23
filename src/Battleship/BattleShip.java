@@ -214,7 +214,10 @@ public class BattleShip {
 			corner_adjacent_special_cases(x, y);
 		}
 		else {
-			
+			top_right_diagonal(x,y);
+			bottom_right_diagonal(x,y);
+			top_left_diagonal(x,y);
+			bottom_left_diagonal(x,y);
 		}
 		
 	}
@@ -235,6 +238,7 @@ public class BattleShip {
 		
 	
 		cell_detection(row, column);//updates object parameters appropriately 
+		
 //		System.out.println("corner: " + cornerCell);
 //		System.out.println("LastRow: " + last_Row);
 //		System.out.println("firstRow: " + first_Row);
