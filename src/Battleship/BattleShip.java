@@ -33,7 +33,7 @@ public class BattleShip {
 	
 	/*********************** Data-Printing Methods ******************************/
 	public static void top_neighbor(int x, int y){
-		System.out.println("[" + x + "," + (y+1) + "]" );
+		System.out.println("[" + (x+1) + "," + (y) + "]" );
 	}
 	
 	public static void bottom_neighbor(int x, int y) {
@@ -67,13 +67,13 @@ public class BattleShip {
 			}
 			
 			else if(x == 0 && y == n-1) {
-				bottom_neighbor(x,y);
-				right_neighbor(x,y);
+				top_neighbor(x,y);
+				left_neighbor(x,y);
 			}
 			
 			else if(x == n-1 && y == 0) {
-				top_neighbor(x,y);
-				left_neighbor(x,y);
+				bottom_neighbor(x,y);
+				right_neighbor(x,y);
 			}
 			
 			else if(x == n-1 && y == n-1) {
@@ -97,6 +97,26 @@ public class BattleShip {
 			bottom_neighbor(x,y);
 			right_neighbor(x,y);
 			left_neighbor(x,y);
+			
+		}
+		/*****************************************************/
+		
+		/*************** first column edge-cases *******************/
+		if(first_Column == true) {
+			top_neighbor(x,y);
+			bottom_neighbor(x,y);
+			right_neighbor(x,y);
+		
+			
+		}
+		/*****************************************************/
+		
+		/*************** last column edge-cases *******************/
+		if(last_Column == true) {
+			top_neighbor(x,y);
+			bottom_neighbor(x,y);
+			left_neighbor(x,y);
+		
 			
 		}
 		/*****************************************************/
