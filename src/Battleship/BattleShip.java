@@ -54,10 +54,26 @@ public class BattleShip {
 		System.out.println("[" + (x) + "," + y + "]");
 	}
 	
+	public static void top_right_diagonal(int x, int y) {
+		System.out.println("[" + (x+1) + "," + (y+1) + "]");
+	}
+	
+	public static void top_left_diagonal(int x, int y) {
+		System.out.println("[" + (x+1) + "," + (y-1) + "]");
+	}
+	
+	public static void bottom_right_diagonal(int x, int y) {
+		System.out.println("[" + (x-1) + "," + (y+1) + "]");
+	}
+	
+	public static void bottom_left_diagonal(int x, int y) {
+		System.out.println("[" + (x-1) + "," + (y-1) + "]");
+	}
+	
 	/*******************************************************************/
 	
 	
-	public static void edge_cases(int x, int y){ //takes care of edge cases
+	public static void edge_cases(int x, int y){ //takes care of edge cases for edge-adjacent squares
 		
 		/*************** corner edge-cases *******************/
 		if(cornerCell == true) { //corner cases
@@ -127,6 +143,79 @@ public class BattleShip {
 		if(cornerCell == true || first_Row == true || first_Column == true || last_Row == true || last_Column == true) {
 			edge_cases(x, y);
 		}
+		else {
+			top_neighbor(x,y);
+			bottom_neighbor(x,y);
+			right_neighbor(x,y);
+			left_neighbor(x,y);
+		}
+		
+	}
+	
+	public static void corner_adjacent_special_cases(int x, int y){ //takes care of edge cases for corner-adjacent squares
+		
+		/*************** corner edge-cases *******************/
+		if(cornerCell == true) { //corner cases
+			if(x == 0 && y == 0) {
+				top_right_diagonal(x,y);
+			}
+			
+			else if(x == 0 && y == n-1) {
+				top_left_diagonal(x,y);
+			}
+			
+			else if(x == n-1 && y == 0) {
+				bottom_right_diagonal(x,y);
+			}
+			
+			else if(x == n-1 && y == n-1) {
+				bottom_left_diagonal(x,y);
+			}
+		}
+		/*****************************************************/
+		
+		/*************** first row edge-cases *******************/
+		if(first_Row == true) {
+			top_right_diagonal(x,y);
+			top_left_diagonal(x,y);
+			
+		}
+		/*****************************************************/
+		
+		/*************** last row edge-cases *******************/
+		if(last_Row == true) {
+			bottom_right_diagonal(x,y);
+			bottom_left_diagonal(x,y);
+			
+		}
+		/*****************************************************/
+		
+		/*************** first column edge-cases *******************/
+		if(first_Column == true) {
+			top_right_diagonal(x,y);
+			bottom_right_diagonal(x,y);
+		
+			
+		}
+		/*****************************************************/
+		
+		/*************** last column edge-cases *******************/
+		if(last_Column == true) {
+			top_left_diagonal(x,y);
+			bottom_left_diagonal(x,y);
+			
+		}
+		/*****************************************************/
+	}
+	
+	public static void corners_adjacent_squares(int x, int y) {
+		
+		if(cornerCell == true || first_Row == true || first_Column == true || last_Row == true || last_Column == true) {
+			corner_adjacent_special_cases(x, y);
+		}
+		else {
+			
+		}
 		
 	}
 
@@ -146,15 +235,16 @@ public class BattleShip {
 		
 	
 		cell_detection(row, column);//updates object parameters appropriately 
-		System.out.println("corner: " + cornerCell);
-		System.out.println("LastRow: " + last_Row);
-		System.out.println("firstRow: " + first_Row);
-		System.out.println("firstCol: " + first_Column);
-		System.out.println("lastCol: " + last_Column);
+//		System.out.println("corner: " + cornerCell);
+//		System.out.println("LastRow: " + last_Row);
+//		System.out.println("firstRow: " + first_Row);
+//		System.out.println("firstCol: " + first_Column);
+//		System.out.println("lastCol: " + last_Column);
 		
 		System.out.println("\nedge-adjacent squares: ");
 		edges(row, column);
-		
+		System.out.println("\ncorner-adjacent squares: ");
+		corners_adjacent_squares(row,column);
 		
 		
 	}
