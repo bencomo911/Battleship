@@ -100,7 +100,7 @@ public class BattleShip {
 	}
 	
 	public static void top_left_diagonal(int x, int y) {
-		x = x-1;
+		x = x+1;
 		y = y-1;
 		System.out.println("[" + (x) + "," + (y) + "]");
 		populate_squares(x,y);
@@ -122,10 +122,13 @@ public class BattleShip {
 	
 	public static void untouched_squares(int [][] grid) {
 		
-		for(int row = 0; row < n; row++) {
+		for(int row = n-1; row > -1; row--) {
 			for(int column = 0; column < n; column++) {
 				if(grid[row][column] != -1) {
 					System.out.print("[" + (row) + "," + (column) + "] ");
+				}
+				else {
+					System.out.print("[   ] ");
 				}
 			}
 			System.out.println();
@@ -294,12 +297,12 @@ public class BattleShip {
 			
 	
 		cell_detection(specified_row, specified_column);//updates object parameters appropriately 
+
 	
 		System.out.println("\nedge-adjacent squares: ");
 		edges_adjacent_squares(specified_row, specified_column);
 		System.out.println("\ncorner-adjacent squares: ");
 		corners_adjacent_squares(specified_row, specified_column);
-		
 		System.out.println("\nnon-adjacent squares: ");
 		untouched_squares(existing_squares);
 		
