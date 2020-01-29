@@ -1,3 +1,9 @@
+/*CS3331 - Advanced Object-oriented programming - Dr. Badreddin - M,W 10:30AM - 11:50AM
+ * This program simulates a three mile long driving course with different speed
+ * limits in each mile and models the three vehicles' distance and speed every
+ * thirty seconds given they all start exactly one minute after the other.
+ * Last updated: Sep 9th, 2019 by Dafne Bencomo - 80592788
+ */
 package Battleship;
 import java.util.Scanner;
 
@@ -14,13 +20,21 @@ public class BattleShip {
 	 
 	public static void create_grid() { //scans user input
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter current coordinate separated by a space: ");
-		
-
-		String[] coordinate = sc.nextLine().split(" "); //Create array with given coordinates
+		try {
+			System.out.println("Enter current coordinate separated by a space: ");
+			
 	
-		specified_row =  Integer.parseInt(coordinate[0]); //Convert input to integer
-		specified_column = Integer.parseInt(coordinate[1]);
+			String[] coordinate = sc.nextLine().split(" "); //Create array with given coordinates
+		
+			specified_row =  Integer.parseInt(coordinate[0]); //Convert input to integer
+			specified_column = Integer.parseInt(coordinate[1]);
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("Unacceptable input, please restart the program and start again.");
+			System.exit(0);
+		}catch(NumberFormatException e) {
+			System.out.println("Input must be integers only, please restart the program and start again.");
+			System.exit(0);
+		}
 
 		sc.close();
 		
