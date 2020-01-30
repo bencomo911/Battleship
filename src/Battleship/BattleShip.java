@@ -1,10 +1,29 @@
 /*CS3331 - Advanced Object-oriented programming - Dr. Badreddin - M,W 10:30AM - 11:50AM
- * This program simulates a three mile long driving course with different speed
- * limits in each mile and models the three vehicles' distance and speed every
- * thirty seconds given they all start exactly one minute after the other.
- * Last updated: Sep 9th, 2019 by Dafne Bencomo - 80592788
- */
-package Battleship;
+ * This program simulates a NxN grid and asks the user for their current location using
+ * coordinates. Given that information the user is provided with a list of the 
+ * edge-adjacent squares, corner-adjacent squares, and non-adjacent squares. 
+ * 
+ * Jan 22, 2020:
+ * 	Initial Commit
+ * 
+ * Jan 23, 2020:
+ * 	Created nxn matrix and prints corner edges
+ * 	Created cell detection method
+ *	Fixed problem with first and last row special cases
+ * 	Created edge-adjacent corner methods
+ * 	Fixed problems with special cases printing
+ * 
+ * Jan 27, 2020:
+ * 	All methods working
+ * 
+ * Jan 28, 2020:
+ * 	Set up try catch
+ * 	Fixed problem with diagonals and updated non-adjacent squares printing method
+ * 
+ * Jan 29, 2020:
+ * 	Final commit
+ ********************************************************************************/
+
 import java.util.Scanner;
 
 public class BattleShip {
